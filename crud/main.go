@@ -1,7 +1,7 @@
 package main
 
 import (
-	"CRUD/list_produtos/routes"
+	"ESTUDO_GO/crud/routes"
 	"net/http"
 )
 

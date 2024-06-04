@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"CRUD/list_produtos/controller"
+	"ESTUDO_GO/crud/controller"
 	"net/http"
 )
 

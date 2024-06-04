@@ -1,7 +1,7 @@
 package models
 
 import (
-	"CRUD/list_produtos/db"
+	"ESTUDO_GO/crud/db"
 	"database/sql"
 	"fmt"
 )

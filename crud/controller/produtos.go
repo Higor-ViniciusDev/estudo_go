@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"CRUD/list_produtos/models"
+	"ESTUDO_GO/crud/models"
 	"fmt"
 	"html/template"
 	"net/http"
