@@ -17,6 +17,6 @@ services:
       PGADMIN_DEFAULT_EMAIL: "higor@email.com"
       PGADMIN_DEFAULT_PASSWORD: "123456"
     ports:
-      - "54321:80"
+      - "5431:80"
     depends_on:
       - postgres
