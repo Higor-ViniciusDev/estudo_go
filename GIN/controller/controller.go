@@ -90,6 +90,6 @@ func BuscaAlunoPorCpf(c *gin.Context) {
 		})
 		return
 	}
-
+	//Teste pull
 	c.JSON(http.StatusOK, aluno)
 }
