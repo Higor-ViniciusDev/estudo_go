@@ -31,6 +31,12 @@ func CriaNovoAluno(c *gin.Context) {
 			"error": err.Error()})
 		return
 	}
+
+	if err := models.ValidarAlunoVazio(&aluno); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"CAMPOS INVALIDO": err.Error()})
+		return
+	}
 	database.DB.Create(&aluno)
 	c.JSON(http.StatusOK, aluno)
 }
@@ -70,6 +76,12 @@ func EditaAluno(c *gin.Context) {
 	if err := c.ShouldBindJSON(&aluno); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error na requisicao": err.Error()})
+		return
+	}
+
+	if err := models.ValidarAlunoVazio(&aluno); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"CAMPOS INVALIDO": err.Error()})
 		return
 	}
 
