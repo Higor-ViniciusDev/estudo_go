@@ -7,6 +7,7 @@ import (
 
 type Aluno struct {
 	gorm.Model
+	Id   int    `json:"id"`
 	Nome string `json:"nome" validate:"nonzero"`
 	Cpf  string `json:"cpf" validate:"len=9,regexp=^[0-9]*$"`
 	Rg   string `json:"rg" validate:"len=11,regexp=^[0-9]*$"`

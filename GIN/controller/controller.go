@@ -3,6 +3,7 @@ package controller
 import (
 	"estudo_go/GIN/database"
 	"estudo_go/GIN/models"
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -45,9 +46,9 @@ func ExibeAlunoEspecifico(c *gin.Context) {
 	var aluno models.Aluno
 	id := c.Params.ByName("id")
 
-	database.DB.First(&aluno, id)
+	database.DB.First(&aluno, "ID = ?", id)
 
-	if aluno.ID == 0 {
+	if aluno.Id == 0 {
 		c.JSON(http.StatusFound, gin.H{
 			"not found": "Aluno não encotrado",
 		})
@@ -71,7 +72,14 @@ func DeletaAluno(c *gin.Context) {
 func EditaAluno(c *gin.Context) {
 	var aluno models.Aluno
 	id := c.Params.ByName("id")
-	database.DB.First(&aluno, id)
+	fmt.Println("AQUI ID PASSADO FUNCAO ", id)
+
+	// Verifique se o aluno existe
+	if err := database.DB.First(&aluno, "id = ?", string(id)).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{
+			"error": "Aluno não encontrado"})
+		return
+	}
 
 	if err := c.ShouldBindJSON(&aluno); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
