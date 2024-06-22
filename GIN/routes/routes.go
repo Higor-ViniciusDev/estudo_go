@@ -8,6 +8,8 @@ import (
 
 func HandleRequest() {
 	r := gin.Default()
+	r.LoadHTMLGlob("./templates/*")
+	r.Static("assets/", "./assets")
 	r.POST("/alunos", controller.CriaNovoAluno)
 	r.GET("/alunos", controller.ExibeTodosAlunos)
 	r.GET("/:nome", controller.Saudacao)
@@ -15,5 +17,7 @@ func HandleRequest() {
 	r.GET("/alunos/cpf/:cpf", controller.BuscaAlunoPorCpf)
 	r.DELETE("/alunos/:id", controller.DeletaAluno)
 	r.PATCH("/alunos/:id", controller.EditaAluno)
+	r.GET("/index", controller.CarregarIndex)
+	r.NoRoute(controller.RotaNaoEncontrada)
 	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
