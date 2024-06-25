@@ -1,19 +1,27 @@
 package main
 
-import rl "github.com/gen2brain/raylib-go/raylib"
+import (
+	"estudo_go/arkanoid/internal"
+
+	rl "github.com/gen2brain/raylib-go/raylib"
+)
 
 func main() {
-	rl.InitWindow(800, 450, "Arkanoid")
+	rl.InitWindow(internal.ScreenWidth, internal.ScreenHeight, "Arkanoid")
 	defer rl.CloseWindow()
+
+	internal.IniciaSomJogo()
+	internal.CarregarImagemFundoJogo()
 
 	rl.SetTargetFPS(60)
 
-	for !rl.WindowShouldClose() {
-		rl.BeginDrawing()
+	internal.TelaLoading()
+	internal.TelaJogoInicial()
 
-		rl.ClearBackground(rl.RayWhite)
-		rl.DrawText("Parabéns você iniciou a primeira janela do jogo", 190, 200, 20, rl.LightGray)
+	rl.UnloadTexture(internal.Textura)
+	rl.UnloadSound(internal.AberturaSon)
 
-		rl.EndDrawing()
-	}
+	rl.CloseAudioDevice()
+
+	rl.CloseWindow()
 }
