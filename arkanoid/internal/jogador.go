@@ -11,7 +11,7 @@ const (
 )
 
 type Jogador struct {
-	position rl.Vector2
-	size     rl.Vector2
-	life     int
+	Position rl.Vector2
+	Size     rl.Vector2
+	Vida     int
 }

@@ -5,8 +5,8 @@ import (
 )
 
 type Bola struct {
-	position rl.Vector2
-	speed    rl.Vector2
-	radius   float32
-	active   bool
+	Position   rl.Vector2
+	Velocidade rl.Vector2
+	Radius     float32
+	Ativo      bool
 }

@@ -10,18 +10,14 @@ func main() {
 	rl.InitWindow(internal.ScreenWidth, internal.ScreenHeight, "Arkanoid")
 	defer rl.CloseWindow()
 
-	internal.IniciaSomJogo()
-	internal.CarregarImagemFundoJogo()
-
 	rl.SetTargetFPS(60)
+	g := internal.Game{}
 
 	internal.TelaLoading()
-	internal.TelaJogoInicial()
 
-	rl.UnloadTexture(internal.Textura)
-	rl.UnloadSound(internal.AberturaSon)
+	internal.InicializaIntesJogo(&g)
 
-	rl.CloseAudioDevice()
+	internal.TelaJogoInicial(&g)
 
 	rl.CloseWindow()
 }
