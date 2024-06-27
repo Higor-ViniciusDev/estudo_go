@@ -55,6 +55,7 @@ func TelaJogoInicial(g *Game) {
 		rl.DrawRectangle(int32(g.Jogador.Position.X-g.Jogador.Size.X/2), int32(g.Jogador.Position.Y-g.Jogador.Size.Y/2),
 			int32(g.Jogador.Size.X), int32(g.Jogador.Size.Y), rl.White)
 
+		rl.DrawCircle(int32(g.Bola.Position.X), int32(g.Bola.Position.Y), g.Bola.Radius, rl.White)
 		rl.EndDrawing()
 	}
 
@@ -114,7 +115,7 @@ func InicializaIntesJogo(g *Game) {
 	// Inicializa Bola
 	g.Bola.Position = rl.Vector2{}
 	g.Bola.Position.X = float32(ScreenWidth / 2)
-	g.Bola.Position.Y = float32(ScreenHeight*7/8 - 30)
+	g.Bola.Position.Y = g.Jogador.Position.Y - 15
 
 	g.Bola.Velocidade = rl.Vector2{}
 	g.Bola.Radius = 7
